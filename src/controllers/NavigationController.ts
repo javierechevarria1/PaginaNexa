@@ -1,12 +1,14 @@
 import { AppModel } from '../models/AppModel'
 import { HeaderView } from '../views/layout/HeaderView'
 import { FooterView } from '../views/layout/FooterView'
+import { SmoothScrollController } from './SmoothScrollController'
 
 export class NavigationController {
   constructor(
     private model: AppModel,
     private headerView: HeaderView,
     private footerView: FooterView,
+    private smoothScroll: SmoothScrollController,
   ) {}
 
   init(): void {
@@ -34,8 +36,9 @@ export class NavigationController {
       link.addEventListener('click', e => {
         e.preventDefault()
         const href = link.getAttribute('href')
-        if (href && href.startsWith('#')) {
-          this.scrollTo(href)
+        if (href?.startsWith('#')) {
+          const el = document.querySelector(href)
+          if (el) this.smoothScroll.scrollToEl(el)
           this.model.closeMenu()
         }
       })
@@ -49,10 +52,5 @@ export class NavigationController {
     this.model.on('menu', () => {
       this.headerView.setMenuOpen(this.model.state.menuOpen)
     })
-  }
-
-  private scrollTo(selector: string): void {
-    const el = document.querySelector(selector)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 }

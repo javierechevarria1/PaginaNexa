@@ -16,12 +16,13 @@ import { ValuesView }           from '../views/sections/ValuesView'
 import { ActivateDeviceView }   from '../views/sections/ActivateDeviceView'
 import { ContactView }          from '../views/sections/ContactView'
 
-import { NavigationController } from './NavigationController'
-import { ParticleController }   from './ParticleController'
+import { NavigationController }   from './NavigationController'
+import { SmoothScrollController } from './SmoothScrollController'
+import { ParticleController }     from './ParticleController'
 import { ScrollRevealController } from './ScrollRevealController'
-import { CounterController }    from './CounterController'
-import { FormController }       from './FormController'
-import { DeviceController }     from './DeviceController'
+import { CounterController }      from './CounterController'
+import { FormController }         from './FormController'
+import { DeviceController }       from './DeviceController'
 
 const DIVIDER = (): HTMLElement => {
   const d = document.createElement('div')
@@ -76,22 +77,28 @@ export class AppController {
     root.appendChild(main)
     root.appendChild(this.footerView.render())
 
+    // ── Smooth scroll (desktop inertia + section snap) ──
+    const smoothScroll = new SmoothScrollController()
+    smoothScroll.init()
+
     // ── Wire scroll buttons in Hero ──
     this.heroView.getScrollButtons().forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.dataset['scroll']
-        if (target) document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' })
+        const el = target ? document.querySelector(target) : null
+        if (el) smoothScroll.scrollToEl(el)
       })
     })
 
     // ── Plan CTA ──
     const planCTA = this.planView.getCTA()
     planCTA?.addEventListener('click', () => {
-      document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })
+      const el = document.querySelector('#contacto')
+      if (el) smoothScroll.scrollToEl(el)
     })
 
     // ── Controllers ──
-    new NavigationController(this.appModel, this.headerView, this.footerView).init()
+    new NavigationController(this.appModel, this.headerView, this.footerView, smoothScroll).init()
     new ScrollRevealController().observe()
     new CounterController().observe()
     new FormController(this.formModel, this.contactView).init()

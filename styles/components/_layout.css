@@ -5,10 +5,21 @@
 }
 @media (max-width: 480px) { .container { padding: 0 1rem; } }
 
-.section { padding: 7rem 0; position: relative; overflow: hidden; }
+.section {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .section-alt { background: var(--bg-2); }
-.section-center { text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 4rem; }
-@media (max-width: 768px) { .section-center { margin-bottom: 2.5rem; } }
+.section-center { text-align: center; display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem; }
+@media (max-width: 768px) {
+  .section { padding: 4rem 0; min-height: auto; }
+  .section-center { margin-bottom: 2rem; }
+}
 
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }

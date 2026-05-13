@@ -1,4 +1,4 @@
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
 @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 2.5rem; } }
 @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; gap: 1rem; } }
 .stat-card {
