@@ -3,51 +3,34 @@ export class SmoothScrollController {
   private targetY = 0
   private readonly ease = 0.085
   private active  = false
+  private tops:   number[] = []
 
   init(): void {
     this.y = this.targetY = window.scrollY
-
-    // Touch devices use native scroll
     if (window.matchMedia('(pointer: coarse)').matches) return
+
     this.active = true
+    // Disable CSS smooth-scroll so it doesn't double-animate our JS scroll
+    document.documentElement.style.scrollBehavior = 'auto'
 
-    let snapTimer  = 0
-    let lastDeltaY = 0
+    // Calculate section positions once and on resize
+    this.calcTops()
+    window.addEventListener('resize', () => this.calcTops(), { passive: true })
 
-    const sectionTops = (): number[] =>
-      Array.from(document.querySelectorAll<HTMLElement>('.hero-section, .section'))
-        .map(el => Math.round(el.getBoundingClientRect().top + this.y))
-        .sort((a, b) => a - b)
+    let snapTimer = 0
+    let netDelta  = 0   // accumulate direction over a burst of wheel events
 
     window.addEventListener('wheel', (e) => {
       e.preventDefault()
       clearTimeout(snapTimer)
-      lastDeltaY = e.deltaY
-      this.targetY = this.clamp(this.targetY + e.deltaY)
+      netDelta       += e.deltaY
+      this.targetY    = this.clamp(this.targetY + e.deltaY)
 
-      // After wheel stops, snap toward the section we're most aligned with
       snapTimer = window.setTimeout(() => {
-        const tops = sectionTops()
-        const vh   = window.innerHeight
-
-        // Find the last section start at or before current scroll
-        let idx = 0
-        for (let i = 0; i < tops.length; i++) {
-          if (tops[i] <= this.targetY + 4) idx = i
-        }
-
-        const curTop  = tops[idx]
-        const nextTop = tops[idx + 1] ?? curTop
-        const progress = (this.targetY - curTop) / vh   // 0 = at section start
-
-        if (lastDeltaY > 0 && progress > 0.38 && nextTop !== curTop) {
-          // Scrolled enough down into next section → snap forward
-          this.targetY = this.clamp(nextTop)
-        } else {
-          // Not enough scroll or going up → snap to current section start
-          this.targetY = this.clamp(curTop)
-        }
-      }, 120)
+        const dir = netDelta >= 0 ? 1 : -1
+        netDelta  = 0
+        this.snap(dir)
+      }, 150)
     }, { passive: false })
 
     const loop = () => {
@@ -61,11 +44,55 @@ export class SmoothScrollController {
     requestAnimationFrame(loop)
   }
 
-  // getBoundingClientRect().top + this.y = absolute document position, always correct
   scrollToEl(el: Element): void {
-    const absTop = el.getBoundingClientRect().top + this.y
-    this.targetY = this.clamp(absTop)
+    // Use absTop (layout-based, not affected by CSS transforms) for accuracy
+    this.targetY = this.clamp(this.absTop(el as HTMLElement))
     if (!this.active) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // ── private ──────────────────────────────────────────────────────────────
+
+  private snap(dir: number): void {
+    const tops = this.tops
+    if (!tops.length) return
+
+    const t  = this.targetY
+    const vh = window.innerHeight
+
+    // Section directly at-or-above targetY
+    let above = tops[0]
+    for (const top of tops) if (top <= t + 4) above = top
+
+    // First section strictly below targetY
+    const below = tops.find(top => top > t + 4) ?? above
+
+    const pastAbove  = t - above   // how far we've gone past the "above" section (≥ 0)
+    const beforeBelow = below - t  // how far we still are before "below" section (≥ 0)
+
+    if (dir > 0) {
+      // Scrolling DOWN: advance if we've crossed 38 % of viewport, else snap back
+      this.targetY = this.clamp(pastAbove > vh * 0.38 ? below : above)
+    } else {
+      // Scrolling UP: return to "below" unless we've pulled back > 38 % of viewport
+      this.targetY = this.clamp(beforeBelow > vh * 0.38 ? above : below)
+    }
+  }
+
+  private calcTops(): void {
+    this.tops = Array.from(
+      document.querySelectorAll<HTMLElement>('.hero-section, .section')
+    ).map(el => this.absTop(el)).sort((a, b) => a - b)
+  }
+
+  // Walk the offsetParent chain for a layout-accurate absolute top (ignores transforms)
+  private absTop(el: HTMLElement): number {
+    let top = 0
+    let cur: HTMLElement | null = el
+    while (cur) {
+      top += cur.offsetTop
+      cur  = cur.offsetParent as HTMLElement | null
+    }
+    return top
   }
 
   private clamp(y: number): number {
