@@ -10,7 +10,7 @@
 .hero-inner {
   position: relative; z-index: 1;
   max-width: 1200px; width: 100%; margin: 0 auto;
-  padding: 7rem 1.5rem 5rem;
+  padding: clamp(5rem, 8vh, 7rem) 1.5rem clamp(3rem, 5vh, 5rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
@@ -77,7 +77,7 @@
 .ring-1 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out infinite; }
 .ring-2 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out 0.8s infinite; }
 .ring-3 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out 1.6s infinite; }
-.ring-glow { width: 14rem; height: 14rem; background: var(--turquoise); opacity: 0.06; filter: blur(3rem); }
+.ring-glow { width: 22rem; height: 22rem; background: var(--turquoise); opacity: 0.12; filter: blur(4rem); }
 
 /* ── Band Image ── */
 .nexa-band-scene {
@@ -95,10 +95,8 @@
   position: relative;
   z-index: 1;
   animation: watch-float 5s ease-in-out infinite;
-  filter:
-    drop-shadow(0 0 40px rgba(0,229,195,0.35))
-    drop-shadow(0 0 80px rgba(0,207,255,0.15))
-    drop-shadow(0 30px 50px rgba(0,0,0,0.5));
+  transform: perspective(900px) rotateY(-14deg) rotateX(5deg);
+  mix-blend-mode: multiply;
 }
 
 .nexa-band-img {
@@ -110,6 +108,21 @@
 @media (max-width: 1024px) { .nexa-band-img { width: 18rem; } }
 @media (max-width: 860px)  { .nexa-band-img { width: 16rem; } }
 @media (max-width: 480px)  { .nexa-band-img { width: 13rem; } }
+
+/* ── Band ground glow ── */
+.nexa-band-scene::after {
+  content: '';
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 2rem;
+  background: rgba(0,229,195,0.2);
+  filter: blur(1.8rem);
+  border-radius: 50%;
+  pointer-events: none;
+}
 
 /* ── Float badges ── */
 .float-badge {
@@ -138,3 +151,12 @@
 }
 @media (max-width: 480px) { .scroll-indicator { display: none; } }
 .scroll-indicator span { font-size: 0.6rem; color: var(--gray); letter-spacing: 0.2em; text-transform: uppercase; }
+
+/* ── Short viewport fix ── */
+@media (max-height: 780px) {
+  .hero-inner { padding-top: 5rem; padding-bottom: 2.5rem; gap: 2rem; }
+  .hero-content { gap: 1.1rem; }
+  .hero-title { font-size: clamp(1.75rem, 4vw, 3rem); }
+  .hero-stats { gap: 1.25rem; }
+  .nexa-band-scene { min-height: 20rem; }
+}
