@@ -7,28 +7,45 @@ export class SmoothScrollController {
   init(): void {
     this.y = this.targetY = window.scrollY
 
-    // Touch devices get native scroll — don't intercept
+    // Touch devices use native scroll
     if (window.matchMedia('(pointer: coarse)').matches) return
     this.active = true
 
-    let snapTimer = 0
-    const sections = (): number[] =>
-      Array.from(document.querySelectorAll('.hero-section, .section'))
-        .map(el => (el as HTMLElement).offsetTop)
+    let snapTimer  = 0
+    let lastDeltaY = 0
+
+    const sectionTops = (): number[] =>
+      Array.from(document.querySelectorAll<HTMLElement>('.hero-section, .section'))
+        .map(el => Math.round(el.getBoundingClientRect().top + this.y))
         .sort((a, b) => a - b)
 
     window.addEventListener('wheel', (e) => {
       e.preventDefault()
       clearTimeout(snapTimer)
+      lastDeltaY = e.deltaY
       this.targetY = this.clamp(this.targetY + e.deltaY)
 
-      // After wheel stops, snap to nearest section start
+      // After wheel stops, snap toward the section we're most aligned with
       snapTimer = window.setTimeout(() => {
-        const closest = sections().reduce((prev, cur) =>
-          Math.abs(cur - this.targetY) < Math.abs(prev - this.targetY) ? cur : prev
-        )
-        if (Math.abs(closest - this.targetY) < window.innerHeight * 0.45) {
-          this.targetY = this.clamp(closest)
+        const tops = sectionTops()
+        const vh   = window.innerHeight
+
+        // Find the last section start at or before current scroll
+        let idx = 0
+        for (let i = 0; i < tops.length; i++) {
+          if (tops[i] <= this.targetY + 4) idx = i
+        }
+
+        const curTop  = tops[idx]
+        const nextTop = tops[idx + 1] ?? curTop
+        const progress = (this.targetY - curTop) / vh   // 0 = at section start
+
+        if (lastDeltaY > 0 && progress > 0.38 && nextTop !== curTop) {
+          // Scrolled enough down into next section → snap forward
+          this.targetY = this.clamp(nextTop)
+        } else {
+          // Not enough scroll or going up → snap to current section start
+          this.targetY = this.clamp(curTop)
         }
       }, 120)
     }, { passive: false })
@@ -44,11 +61,11 @@ export class SmoothScrollController {
     requestAnimationFrame(loop)
   }
 
+  // getBoundingClientRect().top + this.y = absolute document position, always correct
   scrollToEl(el: Element): void {
-    this.targetY = this.clamp((el as HTMLElement).offsetTop)
-    if (!this.active) {
-      el.scrollIntoView({ behavior: 'smooth' })
-    }
+    const absTop = el.getBoundingClientRect().top + this.y
+    this.targetY = this.clamp(absTop)
+    if (!this.active) el.scrollIntoView({ behavior: 'smooth' })
   }
 
   private clamp(y: number): number {
