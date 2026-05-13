@@ -1,4 +1,4 @@
-.value-card { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-.value-emoji { font-size: 2.5rem; }
-.value-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--white); }
-.value-card p { font-size: 0.875rem; line-height: 1.7; }
+.value-card { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.value-emoji { font-size: 2rem; }
+.value-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); }
+.value-card p { font-size: 0.8rem; line-height: 1.6; }
