@@ -22,7 +22,7 @@
   margin-bottom: 1.25rem;
 }
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   color: var(--gray);
   line-height: 1.7;
   max-width: 580px;

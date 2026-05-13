@@ -1,4 +1,4 @@
-.plan-wrapper { display: flex; justify-content: center; }
+.plan-wrapper { display: flex; justify-content: center; padding: 0 1rem; }
 .plan-border {
   width: 100%; max-width: 28rem; border-radius: 1.5rem; padding: 1px;
   background: linear-gradient(135deg, rgba(0,229,195,0.5), rgba(0,207,255,0.3), rgba(0,229,195,0.1));
@@ -7,6 +7,7 @@
   border-radius: calc(1.5rem - 1px); padding: 2.5rem; position: relative; overflow: hidden;
   background: linear-gradient(145deg, #1a2035, #0d1117);
 }
+@media (max-width: 480px) { .plan-card { padding: 1.75rem 1.25rem; } }
 .plan-bg { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,229,195,0.08), rgba(0,207,255,0.04)); pointer-events: none; }
 .plan-badge {
   position: absolute; top: 1.5rem; right: 1.5rem;
@@ -16,8 +17,8 @@
 }
 .plan-name { font-size: 0.7rem; font-weight: 700; color: var(--turquoise); letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1.25rem; }
 .plan-price-row { display: flex; align-items: flex-end; gap: 0.25rem; margin-bottom: 0.5rem; }
-.plan-price-int { font-size: 5rem; font-weight: 900; color: var(--white); line-height: 1; }
-.plan-price-dec { font-size: 1.75rem; font-weight: 900; padding-bottom: 0.5rem; }
+.plan-price-int { font-size: clamp(3.5rem, 12vw, 5rem); font-weight: 900; color: var(--white); line-height: 1; }
+.plan-price-dec { font-size: clamp(1.25rem, 4vw, 1.75rem); font-weight: 900; padding-bottom: 0.5rem; }
 .plan-price-sym { font-size: 1.25rem; font-weight: 700; color: var(--white); padding-bottom: 0.5rem; }
 .plan-price-per { font-size: 0.875rem; color: var(--gray); padding-bottom: 0.25rem; }
 .plan-note { font-size: 0.8rem; color: rgba(209,213,219,0.6); margin-bottom: 1.5rem; }

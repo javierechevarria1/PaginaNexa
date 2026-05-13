@@ -1,4 +1,5 @@
-.eco-diagram { position: relative; max-width: 650px; margin: 0 auto; aspect-ratio: 4/3; }
+.eco-diagram { position: relative; max-width: 650px; margin: 0 auto; aspect-ratio: 4/3; min-height: 280px; }
+@media (max-width: 480px) { .eco-diagram { aspect-ratio: 1/1; min-height: 260px; } }
 .eco-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .eco-node {
   position: absolute; transform: translate(-50%, -50%);
@@ -17,7 +18,8 @@
 .eco-node-sub { font-size: 0.55rem; color: rgba(209,213,219,0.5); }
 .eco-pulse { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--turquoise); animation: pulse-dot 2s ease infinite; box-shadow: 0 0 6px rgba(0,229,195,0.8); }
 .eco-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
-@media (max-width: 768px) { .eco-features { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .eco-features { grid-template-columns: repeat(2, 1fr); margin-top: 2.5rem; } }
+@media (max-width: 480px) { .eco-features { grid-template-columns: 1fr; gap: 1rem; } }
 .eco-feature { padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
 .eco-feature-emoji { font-size: 1.5rem; flex-shrink: 0; }
 .eco-feature h4 { font-size: 0.875rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }

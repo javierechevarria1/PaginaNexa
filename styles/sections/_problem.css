@@ -1,11 +1,14 @@
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
-@media (max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 2.5rem; } }
+@media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; gap: 1rem; } }
 .stat-card {
   padding: 2rem; text-align: center; position: relative; overflow: hidden;
 }
+@media (max-width: 480px) { .stat-card { padding: 1.5rem; } }
 .stat-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--turquoise), transparent); }
-.stat-value { font-size: 3rem; font-weight: 900; line-height: 1; margin-bottom: 0.5rem; }
+.stat-value { font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; line-height: 1; margin-bottom: 0.5rem; }
 .stat-label { font-size: 0.875rem; color: var(--gray); line-height: 1.5; }
 .problem-card { padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+@media (max-width: 480px) { .problem-card { padding: 1.25rem; } }
 .problem-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--white); }
 .problem-card p { font-size: 0.875rem; line-height: 1.7; }

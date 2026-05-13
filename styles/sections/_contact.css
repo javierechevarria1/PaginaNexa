@@ -1,5 +1,6 @@
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+@media (max-width: 480px) { .contact-grid { gap: 2rem; } }
 .contact-info { display: flex; flex-direction: column; gap: 2rem; }
 .contact-info-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.15; }
 .contact-info-sub { font-size: 1.1rem; color: var(--gray); line-height: 1.7; }
@@ -16,6 +17,7 @@
 .contact-item-val { font-size: 0.875rem; font-weight: 500; color: var(--white); }
 .form-border { border-radius: 1.75rem; padding: 1px; background: linear-gradient(135deg, rgba(0,229,195,0.2), rgba(0,207,255,0.1), transparent); }
 .form-card { border-radius: calc(1.75rem - 1px); padding: 2rem; background: linear-gradient(145deg, #141e30, #0d1117); }
+@media (max-width: 480px) { .form-card { padding: 1.5rem 1.25rem; } }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
