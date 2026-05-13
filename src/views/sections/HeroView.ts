@@ -62,7 +62,7 @@ export class HeroView extends BaseView {
 
           <div class="nexa-band-scene">
             <div class="nexa-band-img-wrap">
-              <div class="nexa-band-img" role="img" aria-label="NEXA Smartband"></div>
+              <img src="images/smartband.png" alt="NEXA Smartband" class="nexa-band-img" />
             </div>
 
             <div class="float-badge float-badge-1">
