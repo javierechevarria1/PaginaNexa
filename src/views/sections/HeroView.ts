@@ -51,7 +51,7 @@ export class HeroView extends BaseView {
           </div>
         </div>
 
-        <!-- Visual -->
+        <!-- 3D Band Visual -->
         <div class="hero-visual reveal">
           <div class="smartband-rings">
             <div class="ring ring-1"></div>
@@ -60,47 +60,75 @@ export class HeroView extends BaseView {
             <div class="ring ring-glow"></div>
           </div>
 
-          <div class="smartband-wrap">
-            <div class="smartband-strap-top"></div>
-            <div class="smartband-face">
-              <div class="smartband-screen">
-                <div class="screen-top">
-                  <span class="screen-brand">NEXA</span>
-                  <div class="screen-dots">
-                    <span class="screen-dot screen-dot-1"></span>
-                    <span class="screen-dot screen-dot-2"></span>
-                  </div>
-                </div>
-                <div class="screen-bpm">
-                  <svg width="16" height="14" viewBox="0 0 24 22" fill="none">
-                    <path d="M12 21.5C12 21.5 1 13.5 1 7.5C1 4.18629 3.68629 1.5 7 1.5C9.12 1.5 11 2.6 12 4.29C13 2.6 14.88 1.5 17 1.5C20.3137 1.5 23 4.18629 23 7.5C23 13.5 12 21.5 12 21.5Z" fill="#00E5C3"/>
-                  </svg>
-                  <div>
-                    <div class="screen-bpm-value">72</div>
-                    <div class="screen-bpm-label">BPM</div>
-                  </div>
-                </div>
-                <svg class="screen-wave" viewBox="0 0 96 32" fill="none">
-                  <polyline points="0,16 12,16 18,4 24,28 30,10 36,22 48,16 60,16 66,8 72,24 78,12 84,20 96,16"
-                    stroke="#00E5C3" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-                </svg>
-                <div class="screen-meta">
-                  <div style="text-align:center">
-                    <div class="screen-meta-val screen-meta-val-t">4,231</div>
-                    <div class="screen-meta-unit">pasos</div>
-                  </div>
-                  <div class="screen-meta-sep"></div>
-                  <div style="text-align:center">
-                    <div class="screen-meta-val screen-meta-val-g">98%</div>
-                    <div class="screen-meta-unit">batería</div>
-                  </div>
-                </div>
-                <div class="screen-msg">IA: "¡Buen día, María! ☀️"</div>
-              </div>
-              <div class="smartband-btn"></div>
-            </div>
-            <div class="smartband-strap-bottom"></div>
+          <div class="nexa-band-scene">
+            <div class="nexa-band">
 
+              <!-- Top strap -->
+              <div class="nexa-strap nexa-strap-top">
+                <div class="nexa-strap-shine"></div>
+                <div class="nexa-strap-edge-r"></div>
+              </div>
+
+              <!-- Main module -->
+              <div class="nexa-module">
+                <div class="nexa-module-front">
+                  <!-- LED indicator -->
+                  <div class="nexa-led"></div>
+                  <!-- Screen -->
+                  <div class="nexa-screen">
+                    <div class="screen-top">
+                      <span class="screen-brand">NEXA</span>
+                      <div class="screen-dots">
+                        <span class="screen-dot screen-dot-1"></span>
+                        <span class="screen-dot screen-dot-2"></span>
+                      </div>
+                    </div>
+                    <div class="screen-bpm">
+                      <svg width="16" height="14" viewBox="0 0 24 22" fill="none">
+                        <path d="M12 21.5C12 21.5 1 13.5 1 7.5C1 4.18629 3.68629 1.5 7 1.5C9.12 1.5 11 2.6 12 4.29C13 2.6 14.88 1.5 17 1.5C20.3137 1.5 23 4.18629 23 7.5C23 13.5 12 21.5 12 21.5Z" fill="#00E5C3"/>
+                      </svg>
+                      <div>
+                        <div class="screen-bpm-value">72</div>
+                        <div class="screen-bpm-label">BPM</div>
+                      </div>
+                    </div>
+                    <svg class="screen-wave" viewBox="0 0 96 32" fill="none">
+                      <polyline points="0,16 12,16 18,4 24,28 30,10 36,22 48,16 60,16 66,8 72,24 78,12 84,20 96,16"
+                        stroke="#00E5C3" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="screen-meta">
+                      <div style="text-align:center">
+                        <div class="screen-meta-val screen-meta-val-t">4,231</div>
+                        <div class="screen-meta-unit">pasos</div>
+                      </div>
+                      <div class="screen-meta-sep"></div>
+                      <div style="text-align:center">
+                        <div class="screen-meta-val screen-meta-val-g">98%</div>
+                        <div class="screen-meta-unit">batería</div>
+                      </div>
+                    </div>
+                    <div class="screen-msg">IA: "¡Buen día, María! ☀️"</div>
+                  </div>
+                </div>
+                <!-- Visible side faces for 3D depth -->
+                <div class="nexa-module-edge-r"></div>
+                <div class="nexa-module-edge-b"></div>
+                <!-- Side button -->
+                <div class="nexa-module-btn"></div>
+              </div>
+
+              <!-- Bottom strap -->
+              <div class="nexa-strap nexa-strap-bottom">
+                <div class="nexa-strap-shine"></div>
+                <div class="nexa-strap-edge-r"></div>
+                <div class="nexa-strap-holes">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Floating badges -->
             <div class="float-badge float-badge-1">
               <div class="float-badge-title">IA activa</div>
               <div class="float-badge-sub">24/7</div>
