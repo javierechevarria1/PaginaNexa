@@ -1,0 +1,14 @@
+{
+  "name": "pagina-nexa",
+  "version": "1.0.0",
+  "description": "NEXA - Smartband para personas mayores",
+  "scripts": {
+    "build": "npx esbuild src/main.ts --bundle --outfile=dist/bundle.js --minify",
+    "dev": "npx esbuild src/main.ts --bundle --outfile=dist/bundle.js --watch --servedir=. --serve=3000",
+    "typecheck": "npx tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.5"
+  }
+}
