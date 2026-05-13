@@ -94,20 +94,25 @@
 .nexa-band-img-wrap {
   position: relative;
   z-index: 1;
-  animation: watch-float 5s ease-in-out infinite;
-  transform: perspective(900px) rotateY(-14deg) rotateX(5deg);
-  mix-blend-mode: multiply;
+  animation: watch-float-3d 5s ease-in-out infinite;
 }
 
+/* background-blend-mode mixes the image against its own background-color,
+   so white pixels become var(--bg) — works regardless of parent transforms */
 .nexa-band-img {
   width: 22rem;
+  height: 22rem;
   max-width: 100%;
-  object-fit: contain;
-  display: block;
+  background-image: url('images/smartband.png');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--bg);
+  background-blend-mode: multiply;
 }
-@media (max-width: 1024px) { .nexa-band-img { width: 18rem; } }
-@media (max-width: 860px)  { .nexa-band-img { width: 16rem; } }
-@media (max-width: 480px)  { .nexa-band-img { width: 13rem; } }
+@media (max-width: 1024px) { .nexa-band-img { width: 18rem; height: 18rem; } }
+@media (max-width: 860px)  { .nexa-band-img { width: 16rem; height: 16rem; } }
+@media (max-width: 480px)  { .nexa-band-img { width: 13rem; height: 13rem; } }
 
 /* ── Band ground glow ── */
 .nexa-band-scene::after {

@@ -113,7 +113,7 @@
 
           <div class="nexa-band-scene">
             <div class="nexa-band-img-wrap">
-              <img src="images/smartband.png" alt="NEXA Smartband" class="nexa-band-img" />
+              <div class="nexa-band-img" role="img" aria-label="NEXA Smartband"></div>
             </div>
 
             <div class="float-badge float-badge-1">
