@@ -10,21 +10,19 @@ export class SmoothScrollController {
     if (window.matchMedia('(pointer: coarse)').matches) return
 
     this.active = true
-    // Disable CSS smooth-scroll so it doesn't double-animate our JS scroll
     document.documentElement.style.scrollBehavior = 'auto'
 
-    // Calculate section positions once and on resize
     this.calcTops()
     window.addEventListener('resize', () => this.calcTops(), { passive: true })
 
     let snapTimer = 0
-    let netDelta  = 0   // accumulate direction over a burst of wheel events
+    let netDelta  = 0
 
     window.addEventListener('wheel', (e) => {
       e.preventDefault()
       clearTimeout(snapTimer)
-      netDelta       += e.deltaY
-      this.targetY    = this.clamp(this.targetY + e.deltaY)
+      netDelta     += e.deltaY
+      this.targetY  = this.clamp(this.targetY + e.deltaY)
 
       snapTimer = window.setTimeout(() => {
         const dir = netDelta >= 0 ? 1 : -1
@@ -45,7 +43,6 @@ export class SmoothScrollController {
   }
 
   scrollToEl(el: Element): void {
-    // Use absTop (layout-based, not affected by CSS transforms) for accuracy
     this.targetY = this.clamp(this.absTop(el as HTMLElement))
     if (!this.active) el.scrollIntoView({ behavior: 'smooth' })
   }
@@ -59,22 +56,29 @@ export class SmoothScrollController {
     const t  = this.targetY
     const vh = window.innerHeight
 
-    // Section directly at-or-above targetY
+    // Section whose top is at-or-before targetY
     let above = tops[0]
     for (const top of tops) if (top <= t + 4) above = top
 
-    // First section strictly below targetY
+    // First section strictly after targetY
     const below = tops.find(top => top > t + 4) ?? above
 
-    const pastAbove  = t - above   // how far we've gone past the "above" section (≥ 0)
-    const beforeBelow = below - t  // how far we still are before "below" section (≥ 0)
+    const pastAbove    = t - above          // how far past "above" start
+    const beforeBelow  = below - t          // how far before "below" start
+    const sectionH     = below - above      // approximate height of current section
+
+    // Forward snap threshold = 60 % of the section's own height.
+    // This guarantees the user has seen the ENTIRE section before snapping forward,
+    // regardless of whether the section is taller or shorter than the viewport.
+    const fwdThreshold = Math.max(sectionH * 0.6, vh * 0.45)
+
+    // Backward snap threshold = 50 % of viewport
+    const bwdThreshold = vh * 0.5
 
     if (dir > 0) {
-      // Scrolling DOWN: advance if we've crossed 38 % of viewport, else snap back
-      this.targetY = this.clamp(pastAbove > vh * 0.38 ? below : above)
+      this.targetY = this.clamp(pastAbove > fwdThreshold ? below : above)
     } else {
-      // Scrolling UP: return to "below" unless we've pulled back > 38 % of viewport
-      this.targetY = this.clamp(beforeBelow > vh * 0.38 ? above : below)
+      this.targetY = this.clamp(beforeBelow > bwdThreshold ? above : below)
     }
   }
 
@@ -84,7 +88,6 @@ export class SmoothScrollController {
     ).map(el => this.absTop(el)).sort((a, b) => a - b)
   }
 
-  // Walk the offsetParent chain for a layout-accurate absolute top (ignores transforms)
   private absTop(el: HTMLElement): number {
     let top = 0
     let cur: HTMLElement | null = el
