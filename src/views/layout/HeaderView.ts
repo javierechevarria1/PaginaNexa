@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 const NAV_LINKS = [
   { label: 'Inicio', href: '#inicio' },

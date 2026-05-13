@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 export class HeroView extends BaseView {
   render(): HTMLElement {

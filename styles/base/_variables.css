@@ -1,0 +1,16 @@
+:root {
+  --turquoise: #00E5C3;
+  --cyan: #00CFFF;
+  --hover: #00FFD5;
+  --bg: #0A0A0A;
+  --bg-2: #111827;
+  --card: #1F2937;
+  --white: #FFFFFF;
+  --gray: #D1D5DB;
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-bg: rgba(31,41,55,0.6);
+  --glow-t: rgba(0,229,195,0.3);
+  --glow-c: rgba(0,207,255,0.3);
+  --grad: linear-gradient(135deg, var(--turquoise), var(--cyan));
+  --grad-r: linear-gradient(135deg, var(--cyan), var(--turquoise));
+}

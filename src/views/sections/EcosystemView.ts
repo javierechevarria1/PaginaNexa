@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 interface EcoNode { id: string; label: string; sub: string; icon: string; x: number; y: number }
 

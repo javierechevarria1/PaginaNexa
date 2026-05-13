@@ -1,0 +1,11 @@
+.benefit-card {
+  padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden;
+}
+.benefit-glow {
+  position: absolute; top: -2.5rem; right: -2.5rem; width: 8rem; height: 8rem;
+  border-radius: 50%; opacity: 0; transition: opacity 0.3s ease; filter: blur(2rem);
+}
+.benefit-card:hover .benefit-glow { opacity: 0.1; }
+.benefit-bar { height: 2px; border-radius: 999px; margin-top: auto; opacity: 0.3; }
+.benefit-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--white); }
+.benefit-card p { font-size: 0.875rem; line-height: 1.7; }

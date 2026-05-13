@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 const VALUES = [
   { e: '💙', t: 'Empatía',       d: 'Cada decisión de diseño parte de escuchar y comprender las necesidades reales de las personas mayores y sus familias.', grad: 'rgba(0,229,195,.15),rgba(0,207,255,.1)', border: 'rgba(0,229,195,.2)' },

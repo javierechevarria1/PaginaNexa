@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 const IMPACTS = [
   { icon: '<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>', title: 'Microcomunidades',    stat: '+2,400', statLabel: 'conexiones creadas',      desc: 'NEXA crea grupos locales de personas con intereses comunes, fomentando amistades reales y duraderas.' },

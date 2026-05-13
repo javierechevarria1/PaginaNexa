@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 const STATS = [
   { value: '4.7M', counter: 4.7, suffix: 'M', label: 'personas mayores en España viven en soledad no deseada' },

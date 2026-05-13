@@ -1,0 +1,26 @@
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info { display: flex; flex-direction: column; gap: 2rem; }
+.contact-info-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.15; }
+.contact-info-sub { font-size: 1.1rem; color: var(--gray); line-height: 1.7; }
+.contact-items { display: flex; flex-direction: column; gap: 1rem; }
+.contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; }
+.contact-item-icon {
+  width: 2.5rem; height: 2.5rem; border-radius: 0.875rem; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(0,229,195,0.1), rgba(0,207,255,0.08));
+  border: 1px solid rgba(0,229,195,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--turquoise);
+}
+.contact-item-lbl { font-size: 0.7rem; color: rgba(209,213,219,0.5); margin-bottom: 0.125rem; }
+.contact-item-val { font-size: 0.875rem; font-weight: 500; color: var(--white); }
+.form-border { border-radius: 1.75rem; padding: 1px; background: linear-gradient(135deg, rgba(0,229,195,0.2), rgba(0,207,255,0.1), transparent); }
+.form-card { border-radius: calc(1.75rem - 1px); padding: 2rem; background: linear-gradient(145deg, #141e30, #0d1117); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+@media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-submit { width: 100%; margin-top: 0.5rem; }
+.form-success { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; padding: 3rem 0; text-align: center; }
+.form-success-icon { width: 4rem; height: 4rem; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0,229,195,0.4); }
+.form-success h3 { font-size: 1.25rem; font-weight: 900; color: var(--white); }
+.form-success p { color: var(--gray); font-size: 0.875rem; }

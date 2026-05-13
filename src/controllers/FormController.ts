@@ -1,5 +1,5 @@
 import { FormModel } from '../models/FormModel'
-import { ContactView } from '../views/ContactView'
+import { ContactView } from '../views/sections/ContactView'
 
 export class FormController {
   constructor(

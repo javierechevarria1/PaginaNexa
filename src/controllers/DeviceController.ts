@@ -1,5 +1,5 @@
 import { DeviceModel } from '../models/DeviceModel'
-import { ActivateDeviceView } from '../views/ActivateDeviceView'
+import { ActivateDeviceView } from '../views/sections/ActivateDeviceView'
 
 export class DeviceController {
   constructor(

@@ -1,0 +1,30 @@
+.gradient-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.glow-text { text-shadow: 0 0 30px rgba(0,229,195,0.5); }
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--turquoise);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+}

@@ -1,6 +1,6 @@
 import { AppModel } from '../models/AppModel'
-import { HeaderView } from '../views/HeaderView'
-import { FooterView } from '../views/FooterView'
+import { HeaderView } from '../views/layout/HeaderView'
+import { FooterView } from '../views/layout/FooterView'
 
 export class NavigationController {
   constructor(

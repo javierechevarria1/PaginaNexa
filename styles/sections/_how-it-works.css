@@ -1,0 +1,20 @@
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+@media (max-width: 1024px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .steps-grid { grid-template-columns: 1fr; } }
+.steps-connector {
+  display: none;
+  position: absolute; top: 3.5rem; left: 12.5%; right: 12.5%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,195,0.25), transparent);
+}
+@media (min-width: 1024px) { .steps-connector { display: block; } }
+.step-card { padding: 1.75rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; z-index: 1; }
+.step-icon-wrap { position: relative; }
+.step-number {
+  position: absolute; top: -0.5rem; right: -0.5rem;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem; font-weight: 900; color: var(--bg);
+}
+.step-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); }
+.step-card p { font-size: 0.8rem; line-height: 1.7; }

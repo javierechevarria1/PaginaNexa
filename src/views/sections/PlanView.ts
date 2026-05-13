@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 const FEATURES = [
   'Pulsera NEXA incluida', 'IA personalizada 24/7', 'Soporte técnico dedicado',

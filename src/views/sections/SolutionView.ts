@@ -1,4 +1,4 @@
-import { BaseView } from './BaseView'
+import { BaseView } from '../BaseView'
 
 const FEATURES = [
   { icon: '<circle cx="12" cy="12" r="10"/><path d="M8 12h4l2 4M8 8l1 2"/><circle cx="12" cy="12" r="3"/>', title: 'Inteligencia Artificial', desc: 'IA personalizada que aprende los hábitos y preferencias del usuario para un acompañamiento genuino y contextual.', tag: 'IA adaptativa' },
