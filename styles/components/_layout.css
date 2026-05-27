@@ -12,6 +12,9 @@
 
 /* ══════════════════════════════════════════
    SECTION
+   Sections use natural content height so no
+   content is ever cut off by the viewport.
+   The hero has its own min-height: 100svh.
    ══════════════════════════════════════════ */
 .section {
   position: relative;
@@ -20,17 +23,11 @@
   padding: clamp(2rem, 8vw, 5rem) 0;
   /* snap the section so the fixed nav never covers its label */
   scroll-margin-top: var(--nav-offset);
-  /* full-screen on desktop, natural height on mobile */
-  min-height: 100svh;
+  /* natural height — never force content to overflow */
   display: flex;
   flex-direction: column;
-  /* safe center: when content is taller than screen → start, never clip top */
-  justify-content: safe center;
 }
 .section-alt { background: var(--bg-2); }
-
-/* ── Collapse min-height on tablets/mobile ── */
-@media (max-width: 1024px) { .section { min-height: auto; } }
 
 /* ── Section header block (label + title + subtitle) ── */
 .section-center {

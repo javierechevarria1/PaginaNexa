@@ -67,10 +67,14 @@ export class SmoothScrollController {
     const beforeBelow  = below - t          // how far before "below" start
     const sectionH     = below - above      // approximate height of current section
 
-    // Forward snap threshold = 60 % of the section's own height.
-    // This guarantees the user has seen the ENTIRE section before snapping forward,
-    // regardless of whether the section is taller or shorter than the viewport.
-    const fwdThreshold = Math.max(sectionH * 0.6, vh * 0.45)
+    // Forward snap threshold:
+    // – If section fits in the viewport → snap after seeing 60 % of it
+    // – If section is TALLER than viewport → the user must scroll to within
+    //   half a viewport of the section's bottom before we snap forward.
+    //   This prevents cutting off content in tall card sections.
+    const fwdThreshold = sectionH > vh
+      ? sectionH - vh * 0.5                  // tall section: near the bottom
+      : Math.max(sectionH * 0.6, vh * 0.45)  // normal section: 60 % seen
 
     // Backward snap threshold = 50 % of viewport
     const bwdThreshold = vh * 0.5
