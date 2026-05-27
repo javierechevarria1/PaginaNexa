@@ -2,25 +2,30 @@
 @media (min-width: 900px) {
   #ecosistema .container {
     display: grid;
-    grid-template-areas:
-      "header  header"
-      "diagram features";
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: 1fr 1.2fr;
     grid-template-rows: auto 1fr;
     align-items: center;
     column-gap: clamp(1.5rem, 3vw, 2.5rem);
   }
+
+  /* Cabecera: ocupa las 2 columnas, centrada */
   #ecosistema .container > .section-center {
-    grid-area: header;
     grid-column: 1 / -1;
-    text-align: center;
-    align-items: center;
+    grid-row: 1;
+    text-align: center !important;
+    align-items: center !important;
   }
+
+  /* Diagrama: columna izquierda */
   #ecosistema .container > div:nth-child(2) {
-    grid-area: diagram;
+    grid-column: 1;
+    grid-row: 2;
   }
+
+  /* Cards: columna derecha */
   #ecosistema .eco-features {
-    grid-area: features;
+    grid-column: 2;
+    grid-row: 2;
     display: flex !important;
     flex-direction: column;
     gap: var(--gap-xs);
