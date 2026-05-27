@@ -1,8 +1,13 @@
-.section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,229,195,0.2), transparent); }
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,195,0.2), transparent);
+}
 
+/* ── Icon boxes ── */
 .icon-box {
-  width: 2.5rem; height: 2.5rem;
-  border-radius: 0.75rem;
+  width:  clamp(2rem, 4vw, 2.5rem);
+  height: clamp(2rem, 4vw, 2.5rem);
+  border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, rgba(0,229,195,0.12), rgba(0,207,255,0.08));
   border: 1px solid rgba(0,229,195,0.2);
@@ -10,21 +15,27 @@
   flex-shrink: 0;
   transition: box-shadow 0.3s ease;
 }
-.icon-box-lg { width: 3rem; height: 3rem; border-radius: 0.875rem; }
+.icon-box-lg {
+  width:  clamp(2.5rem, 5vw, 3rem);
+  height: clamp(2.5rem, 5vw, 3rem);
+  border-radius: var(--r-lg);
+}
+
 @media (hover: hover) {
   .glass-card:hover .icon-box { box-shadow: 0 0 15px rgba(0,229,195,0.25); }
 }
-@media (max-width: 480px) {
-  .icon-box { width: 2.25rem; height: 2.25rem; }
-  .icon-box-lg { width: 2.75rem; height: 2.75rem; }
-}
 
+/* ── Tag chip ── */
 .tag {
-  font-size: 0.65rem;
+  font-size: clamp(0.6rem, 1.2vw, 0.65rem);
   font-weight: 700;
   color: var(--turquoise);
   background: rgba(0,229,195,0.1);
   border: 1px solid rgba(0,229,195,0.2);
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
+  /* minimum touch target height */
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }

@@ -16,23 +16,26 @@
   text-transform: uppercase;
   display: block;
   margin-bottom: 0.5rem;
+  /* give the label room to breathe below the sticky nav */
+  padding-top: clamp(0.5rem, 1.5vw, 1rem);
 }
 
-/* ── Section title  (h2) — fluid from 1.35rem (mobile) to 2.2rem (desktop) ── */
+/* ── Section title  h2 — fluid: 320 px → 2 560 px ── */
 .section-title {
-  font-size: clamp(1.35rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.1;
+  letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
 
 /* ── Section subtitle ── */
 .section-subtitle {
-  font-size: clamp(0.8rem, 1.8vw, 0.92rem);
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
   color: var(--gray);
-  line-height: 1.6;
+  line-height: 1.65;
   max-width: 560px;
-  width: 100%;   /* prevent overflow on narrow screens */
+  width: 100%;
   margin: 0 auto;
 }

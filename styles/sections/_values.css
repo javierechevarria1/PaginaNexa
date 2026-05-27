@@ -1,20 +1,15 @@
-/* value-card — inside .grid-3 or .grid-4 */
+/* value-card inside .grid-3 or .grid-4 */
 .value-card {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: flex; flex-direction: column; gap: var(--gap-sm);
+  height: 100%;
 }
-@media (max-width: 480px) { .value-card { padding: 1rem; } }
-
-.value-emoji { font-size: clamp(1.75rem, 4vw, 2rem); }
-
+.value-emoji { font-size: clamp(1.5rem, 3.5vw, 2rem); }
 .value-card h3 {
-  font-size: clamp(0.95rem, 2vw, 1.05rem);
-  font-weight: 700;
-  color: var(--white);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-weight: 700; color: var(--white);
 }
 .value-card p {
-  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
-  line-height: 1.6;
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  line-height: 1.65;
 }

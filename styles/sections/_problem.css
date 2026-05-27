@@ -1,21 +1,18 @@
-/* ── Stats grid: 3 cols → 2 → 1 ── */
+/* ── Stats grid ── */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  gap: var(--gap-md);
+  margin-bottom: clamp(1rem, 3vw, 1.75rem);
 }
+/* tablet */
 @media (max-width: 768px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 1.25rem;
-  }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
-/* stack vertically & center on mobile as per spec */
+/* mobile: single centred column per spec */
 @media (max-width: 560px) {
   .stats-grid {
     grid-template-columns: 1fr;
-    gap: 0.875rem;
     max-width: 22rem;
     margin-left: auto;
     margin-right: auto;
@@ -24,44 +21,33 @@
 
 /* ── Stat card ── */
 .stat-card {
-  padding: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
+  height: 100%;
 }
-@media (max-width: 480px) { .stat-card { padding: 1rem; } }
-
 .stat-bar {
   position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
 }
-
 .stat-value {
-  font-size: clamp(1.5rem, 5vw, 2.25rem);
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 0.35rem;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  font-weight: 900; line-height: 1; margin-bottom: 0.4rem;
 }
-
 .stat-label {
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  color: var(--gray);
-  line-height: 1.5;
+  color: var(--gray); line-height: 1.5;
 }
 
-/* ── Problem cards grid: uses .grid-3 — inherits auto-fit behaviour ── */
+/* ── Problem cards — inherit .grid-3 auto-fit ── */
 .problem-card {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  display: flex; flex-direction: column; gap: var(--gap-sm);
+  height: 100%;
 }
-@media (max-width: 480px) { .problem-card { padding: 1rem; } }
-
 .problem-card h3 {
-  font-size: clamp(0.95rem, 2vw, 1.125rem);
-  font-weight: 700;
-  color: var(--white);
+  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  font-weight: 700; color: var(--white);
 }
 .problem-card p {
   font-size: clamp(0.78rem, 1.5vw, 0.875rem);

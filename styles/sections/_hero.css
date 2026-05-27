@@ -1,72 +1,78 @@
 .hero-section {
-  position: relative; min-height: 100vh;
+  position: relative;
+  min-height: 100svh;
   display: flex; align-items: center; justify-content: center;
   background: var(--bg); overflow: hidden;
-  scroll-margin-top: 0; /* hero is always at the top */
+  scroll-margin-top: 0; /* hero is at the very top */
 }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .hero-glow-1 { top: 25%; left: 20%; width: 24rem; height: 24rem; background: var(--turquoise); }
 .hero-glow-2 { bottom: 30%; right: 20%; width: 20rem; height: 20rem; background: var(--cyan); opacity: 0.04; }
 
+/* ── Inner grid: 2-col on desktop, 1-col on mobile ── */
 .hero-inner {
   position: relative; z-index: 1;
-  max-width: 1200px; width: 100%; margin: 0 auto;
-  padding: clamp(5rem, 8vh, 7rem) 1.5rem clamp(3rem, 5vh, 5rem);
+  width: 100%; max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vh, 7rem) clamp(1rem, 5vw, 4rem) clamp(3rem, 6vh, 5rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: clamp(2rem, 4vw, 3rem);
   align-items: center;
-}
-@media (max-width: 1024px) {
-  .hero-inner { gap: 2rem; }
 }
 @media (max-width: 860px) {
   .hero-inner {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 6rem 1.25rem 4rem;
+    padding-top: clamp(4.5rem, 12vh, 6rem);
+    padding-bottom: clamp(2rem, 5vh, 4rem);
   }
 }
-@media (max-width: 480px) {
-  .hero-inner { padding: 5rem 1rem 3rem; }
-}
 
-.hero-content { display: flex; flex-direction: column; gap: 1.5rem; }
+/* ── Content column ── */
+.hero-content { display: flex; flex-direction: column; gap: clamp(1rem, 2.5vw, 1.5rem); }
 
+/* ── Badge ── */
 .hero-badge {
   display: inline-flex; align-items: center; gap: 0.5rem; align-self: flex-start;
   padding: 0.5rem 1rem; border-radius: 999px;
   background: rgba(255,255,255,0.03); backdrop-filter: blur(20px);
   border: 1px solid rgba(0,229,195,0.3);
-  font-size: 0.75rem; font-weight: 500; color: var(--turquoise);
+  font-size: clamp(0.65rem, 1.3vw, 0.75rem); font-weight: 500; color: var(--turquoise);
+  min-height: 36px;
 }
 .hero-badge-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--turquoise); animation: pulse-dot 2s ease infinite; }
 @media (max-width: 860px) { .hero-badge { align-self: center; } }
 
+/* ── Main title ── */
 .hero-title {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.8rem, 5vw, 4rem);
   font-weight: 900; color: var(--white);
-  line-height: 1.05; letter-spacing: -0.02em;
+  line-height: 1.05; letter-spacing: -0.025em;
 }
-@media (max-width: 480px) { .hero-title { font-size: clamp(1.8rem, 8vw, 2.8rem); } }
 
-.hero-subtitle { font-size: 1rem; color: var(--gray); line-height: 1.7; max-width: 32rem; }
-@media (max-width: 860px) { .hero-subtitle { margin: 0 auto; } }
+/* ── Subtitle ── */
+.hero-subtitle {
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--gray); line-height: 1.7; max-width: 32rem;
+}
+@media (max-width: 860px) { .hero-subtitle { margin: 0 auto; max-width: 44rem; } }
 
-.hero-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+/* ── Inline stats ── */
+.hero-stats { display: flex; gap: clamp(1rem, 3vw, 1.5rem); flex-wrap: wrap; }
 @media (max-width: 860px) { .hero-stats { justify-content: center; } }
-@media (max-width: 400px) { .hero-stats { gap: 1rem; } }
-.hero-stat-value { font-size: 1.4rem; font-weight: 900; }
-.hero-stat-label { font-size: 0.65rem; color: var(--gray); margin-top: 0.1rem; }
+.hero-stat-value { font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 900; }
+.hero-stat-label { font-size: clamp(0.6rem, 1.2vw, 0.65rem); color: var(--gray); margin-top: 0.1rem; }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 0.875rem; }
+/* ── CTAs ── */
+.hero-actions { display: flex; flex-wrap: wrap; gap: clamp(0.625rem, 2vw, 0.875rem); }
 @media (max-width: 860px) { .hero-actions { justify-content: center; } }
-@media (max-width: 400px) {
+@media (max-width: 380px) {
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { text-align: center; justify-content: center; }
 }
 
-/* ── Rings ── */
+/* ── Rings / glow ── */
 .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; }
 .smartband-rings { position: absolute; pointer-events: none; }
 .ring {
@@ -75,26 +81,21 @@
   top: 50%; left: 50%;
 }
 .ring-1, .ring-2, .ring-3 { border: 1px solid rgba(0,229,195,0.1); }
-.ring-1 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out infinite; }
-.ring-2 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out 0.8s infinite; }
-.ring-3 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out 1.6s infinite; }
+.ring-1 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out          infinite; }
+.ring-2 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out  0.8s  infinite; }
+.ring-3 { width: 20rem; height: 20rem; animation: ring-pulse 2.5s ease-out  1.6s  infinite; }
 .ring-glow { width: 22rem; height: 22rem; background: var(--turquoise); opacity: 0.12; filter: blur(4rem); }
 
-/* ── Band Image ── */
+/* ── Band scene ── */
 .nexa-band-scene {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   width: 100%;
-  min-height: 26rem;
+  min-height: clamp(14rem, 30vw, 26rem);
 }
-@media (max-width: 860px) { .nexa-band-scene { min-height: 20rem; } }
-@media (max-width: 480px) { .nexa-band-scene { min-height: 16rem; } }
 
 .nexa-band-img-wrap {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   animation: watch-float-3d 5s ease-in-out infinite;
   filter:
     drop-shadow(0 0 35px rgba(0,229,195,0.45))
@@ -103,46 +104,36 @@
 }
 
 .nexa-band-img {
-  width: 22rem;
+  width: clamp(10rem, 30vw, 22rem);
   max-width: 100%;
   object-fit: contain;
   display: block;
 }
-@media (max-width: 1024px) { .nexa-band-img { width: 18rem; } }
-@media (max-width: 860px)  { .nexa-band-img { width: 16rem; } }
-@media (max-width: 480px)  { .nexa-band-img { width: 13rem; } }
 
-/* ── Band ground glow ── */
+/* ── Ground glow ── */
 .nexa-band-scene::after {
   content: '';
-  position: absolute;
-  bottom: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 55%;
-  height: 2rem;
+  position: absolute; bottom: 8%; left: 50%; transform: translateX(-50%);
+  width: 55%; height: 2rem;
   background: rgba(0,229,195,0.2);
-  filter: blur(1.8rem);
-  border-radius: 50%;
-  pointer-events: none;
+  filter: blur(1.8rem); border-radius: 50%; pointer-events: none;
 }
 
 /* ── Float badges ── */
 .float-badge {
   position: absolute;
   backdrop-filter: blur(16px); background: var(--glass-bg);
-  border: 1px solid var(--glass-border); border-radius: 0.75rem;
-  padding: 0.5rem 0.75rem; text-align: center;
-  z-index: 2;
+  border: 1px solid var(--glass-border); border-radius: var(--r-lg);
+  padding: 0.5rem 0.75rem; text-align: center; z-index: 2;
 }
-.float-badge-1 { left: 0; top: 25%; animation: float-badge 4s ease-in-out infinite; }
+.float-badge-1 { left: 0; top: 25%;  animation: float-badge 4s ease-in-out        infinite; }
 .float-badge-2 { right: 0; bottom: 20%; animation: float-badge 4s ease-in-out 1.5s infinite; }
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .float-badge-1 { left: -0.5rem; }
   .float-badge-2 { right: -0.5rem; }
 }
-.float-badge-title { font-size: 0.7rem; font-weight: 700; }
-.float-badge-sub { font-size: 0.6rem; color: rgba(209,213,219,0.6); }
+.float-badge-title { font-size: clamp(0.65rem, 1.3vw, 0.7rem); font-weight: 700; }
+.float-badge-sub   { font-size: 0.6rem; color: rgba(209,213,219,0.6); }
 .float-badge-1 .float-badge-title { color: var(--turquoise); }
 .float-badge-2 .float-badge-title { color: var(--cyan); }
 
@@ -155,11 +146,9 @@
 @media (max-width: 480px) { .scroll-indicator { display: none; } }
 .scroll-indicator span { font-size: 0.6rem; color: var(--gray); letter-spacing: 0.2em; text-transform: uppercase; }
 
-/* ── Short viewport fix ── */
-@media (max-height: 780px) {
-  .hero-inner { padding-top: 5rem; padding-bottom: 2.5rem; gap: 2rem; }
-  .hero-content { gap: 1.1rem; }
-  .hero-title { font-size: clamp(1.75rem, 4vw, 3rem); }
-  .hero-stats { gap: 1.25rem; }
-  .nexa-band-scene { min-height: 20rem; }
+/* ── Short viewport (laptop lids etc.) ── */
+@media (max-height: 680px) {
+  .hero-inner { padding-top: 4.5rem; padding-bottom: 2rem; gap: 1.5rem; }
+  .hero-content { gap: 0.875rem; }
+  .nexa-band-scene { min-height: 14rem; }
 }

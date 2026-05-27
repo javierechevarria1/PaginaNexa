@@ -1,9 +1,15 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html {
   scroll-behavior: smooth;
-  /* offset for fixed 4rem navbar + 0.5rem breathing room */
-  scroll-padding-top: 4.5rem;
+  /* offset anchors so the fixed navbar never covers the section label */
+  scroll-padding-top: var(--nav-offset);
+  /* never allow horizontal scrollbar at any viewport width */
+  overflow-x: hidden;
 }
 
 body {
@@ -12,14 +18,17 @@ body {
   color: var(--gray);
   overflow-x: hidden;
   line-height: 1.6;
+  /* prevent content wider than the viewport from showing */
+  max-width: 100vw;
 }
 
-a { text-decoration: none; color: inherit; }
+a  { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; }
 input, textarea { font-family: inherit; }
-img, svg { display: block; }
+img, svg { display: block; max-width: 100%; }
 
-::-webkit-scrollbar { width: 10px; }
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--grad); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--hover); }

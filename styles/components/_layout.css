@@ -1,83 +1,85 @@
-/* ── Container ── */
+/* ══════════════════════════════════════════
+   CONTAINER
+   fluid padding: 1 rem (320 px) → 4 rem (1440 px+)
+   max-width caps at 1400 px on wide screens
+   ══════════════════════════════════════════ */
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 clamp(1rem, 5vw, 4rem);
 }
-@media (max-width: 768px) { .container { padding: 0 1.25rem; } }
-@media (max-width: 480px) { .container { padding: 0 1rem; } }
 
-/* ── Section ── */
+/* ══════════════════════════════════════════
+   SECTION
+   ══════════════════════════════════════════ */
 .section {
-  padding: 3.5rem 0;
   position: relative;
   overflow: hidden;
+  /* fluid vertical padding: 2 rem → 5 rem */
+  padding: clamp(2rem, 8vw, 5rem) 0;
+  /* snap the section so the fixed nav never covers its label */
+  scroll-margin-top: var(--nav-offset);
+  /* full-screen on desktop, natural height on mobile */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  /* safe center: when content is taller than screen → start, never clip top */
   justify-content: safe center;
-  /* ensure anchor links & JS scrollTo clear the fixed 4rem navbar */
-  scroll-margin-top: 4.5rem;
 }
 .section-alt { background: var(--bg-2); }
 
+/* ── Collapse min-height on tablets/mobile ── */
+@media (max-width: 1024px) { .section { min-height: auto; } }
+
+/* ── Section header block (label + title + subtitle) ── */
 .section-center {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1.75rem;
+  margin-bottom: clamp(1.25rem, 4vw, 2.5rem);
 }
 
-/* ── Tablet ── */
-@media (max-width: 1024px) {
-  .section { padding: 3rem 0; }
-}
+/* ══════════════════════════════════════════
+   GRID SYSTEM
+   All grids use auto-fit so they collapse
+   gracefully at every viewport width.
+   ══════════════════════════════════════════ */
 
-/* ── Mobile ── */
-@media (max-width: 768px) {
-  .section {
-    padding: 2.5rem 0;
-    min-height: auto;   /* don't force full-screen on small devices */
-  }
-  .section-center { margin-bottom: 1.5rem; }
-}
-
-@media (max-width: 480px) {
-  .section { padding: 2rem 0; }
-  .section-center { margin-bottom: 1.25rem; }
-}
-
-/* ── Grids ── */
-/* 2-col: stays 2 until ~600 px, then single col */
+/* 2-col: side-by-side → 1 col below 640 px */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-@media (max-width: 640px) {
-  .grid-2 { grid-template-columns: 1fr; }
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--gap-md);
 }
 
-/* 3-col: auto-fit so it naturally collapses
-   ≥860 px  → 3 cols  (3×280=840 fits)
-   560–859  → 2 cols
-   <560     → 1 col   */
+/* 3-col: 3 → 2 → 1
+   minmax floor 280 px → 2 cols from ~600 px, 3 from ~900 px */
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--gap-md);
+}
+/* lock to exactly 3 on large screens so odd-card orphans look good */
+@media (min-width: 1025px) {
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* 4-col: desktop→2 col→1 col */
+/* 4-col: 4 → 2 → 1
+   minmax floor 220 px → 2 cols from ~480 px, 4 from ~940 px */
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--gap-md);
 }
-@media (max-width: 1024px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 1025px) {
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
 }
-@media (max-width: 480px) {
-  .grid-4 { grid-template-columns: 1fr; }
+
+/* ── Uniform card height inside grids ── */
+.grid-2 > *,
+.grid-3 > *,
+.grid-4 > * {
+  height: 100%;
 }

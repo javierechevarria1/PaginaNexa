@@ -1,16 +1,37 @@
 :root {
+  /* ── Brand colours ── */
   --turquoise: #00E5C3;
-  --cyan: #00CFFF;
-  --hover: #00FFD5;
-  --bg: #0A0A0A;
-  --bg-2: #111827;
-  --card: #1F2937;
-  --white: #FFFFFF;
-  --gray: #D1D5DB;
+  --cyan:      #00CFFF;
+  --hover:     #00FFD5;
+  --bg:        #0A0A0A;
+  --bg-2:      #111827;
+  --card:      #1F2937;
+  --white:     #FFFFFF;
+  --gray:      #D1D5DB;
+
+  /* ── Glass / glow ── */
   --glass-border: rgba(255,255,255,0.08);
-  --glass-bg: rgba(31,41,55,0.6);
-  --glow-t: rgba(0,229,195,0.3);
-  --glow-c: rgba(0,207,255,0.3);
-  --grad: linear-gradient(135deg, var(--turquoise), var(--cyan));
+  --glass-bg:     rgba(31,41,55,0.6);
+  --glow-t:       rgba(0,229,195,0.3);
+  --glow-c:       rgba(0,207,255,0.3);
+
+  /* ── Gradients ── */
+  --grad:   linear-gradient(135deg, var(--turquoise), var(--cyan));
   --grad-r: linear-gradient(135deg, var(--cyan), var(--turquoise));
+
+  /* ── Navigation ── */
+  --nav-h:      4rem;     /* actual navbar height   */
+  --nav-offset: 4.5rem;  /* scroll offset = nav + breathing */
+
+  /* ── Border radii (fluid) ── */
+  --r-sm:  clamp(6px,  1vw, 10px);
+  --r-md:  clamp(10px, 1.5vw, 14px);
+  --r-lg:  clamp(12px, 2vw,  18px);
+  --r-xl:  clamp(16px, 2.5vw, 24px);
+  --r-2xl: clamp(20px, 3vw,  28px);
+
+  /* ── Spacing tokens ── */
+  --gap-sm:  clamp(0.625rem, 1.5vw, 1rem);
+  --gap-md:  clamp(0.875rem, 2vw,   1.25rem);
+  --gap-lg:  clamp(1.25rem,  3vw,   2rem);
 }

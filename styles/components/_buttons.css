@@ -1,14 +1,20 @@
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  border-radius: 0.875rem;
+  /* fluid horizontal padding */
+  padding: clamp(0.625rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--r-lg);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.875rem);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  /* minimum touch target */
+  min-height: 44px;
+  min-width: 44px;
+  white-space: nowrap;
 }
 .btn::before {
   content: '';
@@ -19,23 +25,29 @@
   transition: left 0.5s ease;
 }
 .btn:hover::before { left: 100%; }
+
 .btn-primary {
   background: var(--grad);
   color: var(--bg);
   box-shadow: 0 0 25px var(--glow-t);
 }
-.btn-primary:hover {
-  background: var(--grad-r);
-  box-shadow: 0 0 40px rgba(0,229,195,0.5), 0 0 60px rgba(0,207,255,0.2);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .btn-primary:hover {
+    background: var(--grad-r);
+    box-shadow: 0 0 40px rgba(0,229,195,0.5), 0 0 60px rgba(0,207,255,0.2);
+    transform: translateY(-2px);
+  }
 }
+
 .btn-secondary {
   background: transparent;
   color: var(--turquoise);
   border: 1px solid rgba(0,229,195,0.4);
 }
-.btn-secondary:hover {
-  border-color: rgba(0,229,195,0.8);
-  background: rgba(0,229,195,0.08);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .btn-secondary:hover {
+    border-color: rgba(0,229,195,0.8);
+    background: rgba(0,229,195,0.08);
+    transform: translateY(-2px);
+  }
 }
