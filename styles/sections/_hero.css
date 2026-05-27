@@ -2,6 +2,7 @@
   position: relative; min-height: 100vh;
   display: flex; align-items: center; justify-content: center;
   background: var(--bg); overflow: hidden;
+  scroll-margin-top: 0; /* hero is always at the top */
 }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .hero-glow-1 { top: 25%; left: 20%; width: 24rem; height: 24rem; background: var(--turquoise); }

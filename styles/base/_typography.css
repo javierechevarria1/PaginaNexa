@@ -1,3 +1,4 @@
+/* ── Gradient / glow helpers ── */
 .gradient-text {
   background: var(--grad);
   -webkit-background-clip: text;
@@ -5,26 +6,33 @@
   background-clip: text;
 }
 .glow-text { text-shadow: 0 0 30px rgba(0,229,195,0.5); }
+
+/* ── Section label  (e.g. "EL PROBLEMA") ── */
 .section-label {
-  font-size: 0.65rem;
+  font-size: clamp(0.6rem, 1.2vw, 0.7rem);
   font-weight: 700;
   color: var(--turquoise);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   display: block;
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.5rem;
 }
+
+/* ── Section title  (h2) — fluid from 1.35rem (mobile) to 2.2rem (desktop) ── */
 .section-title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.35rem, 3.5vw, 2.2rem);
   font-weight: 900;
   color: var(--white);
   line-height: 1.1;
-  margin-bottom: 0.875rem;
+  margin-bottom: 0.75rem;
 }
+
+/* ── Section subtitle ── */
 .section-subtitle {
-  font-size: clamp(0.82rem, 1.8vw, 0.92rem);
+  font-size: clamp(0.8rem, 1.8vw, 0.92rem);
   color: var(--gray);
   line-height: 1.6;
   max-width: 560px;
+  width: 100%;   /* prevent overflow on narrow screens */
   margin: 0 auto;
 }

@@ -1,5 +1,29 @@
-.impact-card { padding: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.875rem; text-align: center; }
-.impact-stat { font-size: 1.875rem; font-weight: 900; }
-.impact-stat-label { font-size: 0.7rem; color: rgba(209,213,219,0.5); }
-.impact-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); }
-.impact-card p { font-size: 0.8rem; line-height: 1.7; }
+/* impact-card — inside .grid-3 or .grid-4 */
+.impact-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  text-align: center;
+}
+@media (max-width: 480px) { .impact-card { padding: 1rem; } }
+
+.impact-stat {
+  font-size: clamp(1.5rem, 4vw, 1.875rem);
+  font-weight: 900;
+}
+.impact-stat-label {
+  font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+  color: rgba(209,213,219,0.5);
+}
+
+.impact-card h3 {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-weight: 700;
+  color: var(--white);
+}
+.impact-card p {
+  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+  line-height: 1.65;
+}

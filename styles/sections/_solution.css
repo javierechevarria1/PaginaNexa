@@ -1,10 +1,34 @@
-.feature-card { padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; position: relative; overflow: hidden; }
+/* feature-card — used inside .grid-3 (auto-fit) */
+.feature-card {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 480px) { .feature-card { padding: 1rem; } }
+
 .feature-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(0,229,195,0.4), transparent);
   opacity: 0; transition: opacity 0.3s ease;
 }
 .feature-card:hover::before { opacity: 1; }
-.feature-card-header { display: flex; align-items: flex-start; justify-content: space-between; }
-.feature-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
-.feature-card p { font-size: 0.8rem; line-height: 1.55; }
+
+.feature-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.feature-card h3 {
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+.feature-card p {
+  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+  line-height: 1.55;
+}

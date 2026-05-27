@@ -1,4 +1,20 @@
-.value-card { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
-.value-emoji { font-size: 2rem; }
-.value-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); }
-.value-card p { font-size: 0.8rem; line-height: 1.6; }
+/* value-card — inside .grid-3 or .grid-4 */
+.value-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (max-width: 480px) { .value-card { padding: 1rem; } }
+
+.value-emoji { font-size: clamp(1.75rem, 4vw, 2rem); }
+
+.value-card h3 {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 700;
+  color: var(--white);
+}
+.value-card p {
+  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+  line-height: 1.6;
+}

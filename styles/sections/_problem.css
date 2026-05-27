@@ -1,14 +1,69 @@
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
-@media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); margin-bottom: 2.5rem; } }
-@media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; gap: 1rem; } }
-.stat-card {
-  padding: 1.25rem; text-align: center; position: relative; overflow: hidden;
+/* ── Stats grid: 3 cols → 2 → 1 ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
-@media (max-width: 480px) { .stat-card { padding: 1.5rem; } }
-.stat-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--turquoise), transparent); }
-.stat-value { font-size: clamp(1.6rem, 5vw, 2.25rem); font-weight: 900; line-height: 1; margin-bottom: 0.35rem; }
-.stat-label { font-size: 0.875rem; color: var(--gray); line-height: 1.5; }
-.problem-card { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.875rem; }
-@media (max-width: 480px) { .problem-card { padding: 1.25rem; } }
-.problem-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--white); }
-.problem-card p { font-size: 0.875rem; line-height: 1.7; }
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 1.25rem;
+  }
+}
+/* stack vertically & center on mobile as per spec */
+@media (max-width: 560px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.875rem;
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── Stat card ── */
+.stat-card {
+  padding: 1.25rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 480px) { .stat-card { padding: 1rem; } }
+
+.stat-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
+}
+
+.stat-value {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* ── Problem cards grid: uses .grid-3 — inherits auto-fit behaviour ── */
+.problem-card {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+@media (max-width: 480px) { .problem-card { padding: 1rem; } }
+
+.problem-card h3 {
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  font-weight: 700;
+  color: var(--white);
+}
+.problem-card p {
+  font-size: clamp(0.78rem, 1.5vw, 0.875rem);
+  line-height: 1.65;
+}

@@ -1,11 +1,30 @@
+/* benefit-card — inside .grid-3 (auto-fit) */
 .benefit-card {
-  padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; position: relative; overflow: hidden;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  overflow: hidden;
 }
+@media (max-width: 480px) { .benefit-card { padding: 1rem; } }
+
 .benefit-glow {
-  position: absolute; top: -2.5rem; right: -2.5rem; width: 8rem; height: 8rem;
-  border-radius: 50%; opacity: 0; transition: opacity 0.3s ease; filter: blur(2rem);
+  position: absolute; top: -2.5rem; right: -2.5rem;
+  width: 8rem; height: 8rem; border-radius: 50%;
+  opacity: 0; transition: opacity 0.3s ease;
+  filter: blur(2rem);
 }
 .benefit-card:hover .benefit-glow { opacity: 0.1; }
+
 .benefit-bar { height: 2px; border-radius: 999px; margin-top: auto; opacity: 0.3; }
-.benefit-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--white); }
-.benefit-card p { font-size: 0.8rem; line-height: 1.55; }
+
+.benefit-card h3 {
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+  font-weight: 700;
+  color: var(--white);
+}
+.benefit-card p {
+  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+  line-height: 1.55;
+}
