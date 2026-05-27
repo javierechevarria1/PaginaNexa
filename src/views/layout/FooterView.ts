@@ -33,8 +33,7 @@ export class FooterView extends BaseView {
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="#inicio" class="footer-logo" data-nav>
-              <div class="footer-logo-icon">N</div>
-              NEXA
+              <img src="images/LogoNexa.png" alt="NEXA" class="footer-logo-img" />
             </a>
             <p class="footer-tagline"><span class="gradient-text" style="font-weight:600">Conectar, cuidar y acompañar.</span><br/>La smartband que combate la soledad y mejora el bienestar de las personas mayores con IA, IoT y voz inteligente.</p>
             <div class="footer-social">

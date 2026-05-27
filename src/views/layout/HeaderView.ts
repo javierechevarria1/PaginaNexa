@@ -20,8 +20,7 @@ export class HeaderView extends BaseView {
     header.innerHTML = `
       <div class="nav-inner">
         <a href="#inicio" class="nav-logo" data-nav>
-          <div class="nav-logo-icon">N</div>
-          NEXA
+          <img src="images/LogoNexa.png" alt="NEXA" class="nav-logo-img" />
         </a>
         <nav class="nav-links">
           ${NAV_LINKS.map(l => `<a href="${l.href}" class="nav-link" data-nav>${l.label}</a>`).join('')}

@@ -1,55 +1,43 @@
-/* ── Stats grid ── */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap-md);
-  margin-bottom: clamp(1rem, 3vw, 1.75rem);
+  gap: var(--gap-sm);
+  margin-bottom: clamp(0.75rem, 1.8vw, 1.1rem);
 }
-/* tablet */
-@media (max-width: 768px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-/* mobile: single centred column per spec */
+@media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
-    max-width: 22rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .stats-grid { grid-template-columns: 1fr; max-width: 20rem; margin-left: auto; margin-right: auto; }
 }
 
-/* ── Stat card ── */
 .stat-card {
-  padding: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(0.75rem, 1.8vw, 1.1rem);
   text-align: center;
   position: relative; overflow: hidden;
   height: 100%;
 }
 .stat-bar {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
 }
 .stat-value {
-  font-size: clamp(1.5rem, 6vw, 2.5rem);
-  font-weight: 900; line-height: 1; margin-bottom: 0.4rem;
+  font-size: clamp(1.4rem, 5vw, 2.25rem);
+  font-weight: 900; line-height: 1; margin-bottom: 0.3rem;
 }
 .stat-label {
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  color: var(--gray); line-height: 1.5;
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+  color: var(--gray); line-height: 1.45;
 }
 
-/* ── Problem cards — inherit .grid-3 auto-fit ── */
 .problem-card {
-  padding: clamp(1rem, 3vw, 1.5rem);
-  display: flex; flex-direction: column; gap: var(--gap-sm);
+  padding: clamp(0.75rem, 1.8vw, 1.1rem);
+  display: flex; flex-direction: column; gap: 0.4rem;
   height: 100%;
 }
 .problem-card h3 {
-  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
   font-weight: 700; color: var(--white);
 }
 .problem-card p {
-  font-size: clamp(0.78rem, 1.5vw, 0.875rem);
-  line-height: 1.65;
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+  line-height: 1.55;
 }

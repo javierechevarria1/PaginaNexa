@@ -8,24 +8,82 @@
   .contact-grid { grid-template-columns: 1fr 1fr; }
 }
 
-.contact-info { display: flex; flex-direction: column; gap: clamp(1.25rem, 3vw, 2rem); }
+.contact-info { display: flex; flex-direction: column; gap: clamp(1rem, 2.5vw, 1.5rem); }
 .contact-info-title {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 900; color: var(--white); line-height: 1.15;
 }
-.contact-info-sub { font-size: clamp(0.875rem, 1.8vw, 1.1rem); color: var(--gray); line-height: 1.7; }
-.contact-items { display: flex; flex-direction: column; gap: var(--gap-sm); }
-.contact-item { display: flex; align-items: center; gap: clamp(0.75rem, 2vw, 1rem); padding: clamp(0.75rem, 2vw, 1rem); }
-.contact-item-icon {
-  width: clamp(2rem, 4vw, 2.5rem); height: clamp(2rem, 4vw, 2.5rem);
-  border-radius: var(--r-lg); flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(0,229,195,0.1), rgba(0,207,255,0.08));
-  border: 1px solid rgba(0,229,195,0.2);
-  display: flex; align-items: center; justify-content: center; color: var(--turquoise);
-}
-.contact-item-lbl { font-size: clamp(0.65rem, 1.2vw, 0.7rem); color: rgba(209,213,219,0.5); margin-bottom: 0.125rem; }
-.contact-item-val { font-size: clamp(0.8rem, 1.5vw, 0.875rem); font-weight: 500; color: var(--white); word-break: break-all; }
+.contact-info-sub { font-size: clamp(0.8rem, 1.6vw, 0.95rem); color: var(--gray); line-height: 1.65; }
 
+/* ── Lista de items de contacto ── */
+.contact-items { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.contact-item {
+  /* forzar horizontal (glass-card impone column) */
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1rem;
+  padding: 0.875rem 1.125rem 0.875rem 1.375rem;
+  border-radius: var(--r-xl);
+  position: relative;
+  overflow: hidden;
+  height: auto !important;          /* anular height:100% de glass-card */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: linear-gradient(135deg, rgba(0,229,195,0.04) 0%, transparent 70%);
+}
+
+/* Acento izquierdo degradado */
+.contact-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 15%; bottom: 15%;
+  width: 3px;
+  background: linear-gradient(180deg, var(--turquoise), var(--cyan));
+  border-radius: 999px;
+}
+
+@media (hover: hover) {
+  .contact-item:hover {
+    transform: translateX(5px);
+    box-shadow: -6px 0 24px rgba(0,229,195,0.08), 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .contact-item:hover .contact-item-icon {
+    box-shadow: 0 0 18px rgba(0,229,195,0.3);
+    border-color: rgba(0,229,195,0.45);
+    background: linear-gradient(135deg, rgba(0,229,195,0.2), rgba(0,207,255,0.12));
+  }
+}
+
+/* ── Icono ── */
+.contact-item-icon {
+  width: 2.6rem; height: 2.6rem;
+  border-radius: var(--r-lg);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(0,229,195,0.12), rgba(0,207,255,0.07));
+  border: 1px solid rgba(0,229,195,0.22);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--turquoise);
+  box-shadow: 0 0 10px rgba(0,229,195,0.08);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ── Texto ── */
+.contact-item-lbl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(209,213,219,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+.contact-item-val {
+  font-size: clamp(0.8rem, 1.5vw, 0.925rem);
+  font-weight: 600;
+  color: var(--white);
+  word-break: break-all;
+}
+
+/* ── Formulario ── */
 .form-border {
   border-radius: var(--r-2xl); padding: 1px;
   background: linear-gradient(135deg, rgba(0,229,195,0.2), rgba(0,207,255,0.1), transparent);

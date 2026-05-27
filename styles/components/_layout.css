@@ -1,82 +1,51 @@
-/* ══════════════════════════════════════════
-   CONTAINER
-   fluid padding: 1 rem (320 px) → 4 rem (1440 px+)
-   max-width caps at 1400 px on wide screens
-   ══════════════════════════════════════════ */
 .container {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 clamp(1rem, 5vw, 4rem);
+  padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
-/* ══════════════════════════════════════════
-   SECTION
-   Sections use natural content height so no
-   content is ever cut off by the viewport.
-   The hero has its own min-height: 100svh.
-   ══════════════════════════════════════════ */
 .section {
   position: relative;
   overflow: hidden;
-  /* fluid vertical padding — compact enough to see all cards in one viewport */
-  padding: clamp(1.25rem, 3.5vw, 2.25rem) 0;
-  /* snap the section so the fixed nav never covers its label */
+  /* cada sección ocupa exactamente una pantalla */
+  min-height: 100svh;
+  /* padding-top compensa el navbar fijo para que el contenido quede centrado visualmente */
+  padding: calc(var(--nav-h) + clamp(0.5rem, 1.5vw, 1rem)) 0 clamp(0.75rem, 2vw, 1.25rem);
   scroll-margin-top: var(--nav-offset);
-  /* natural height — never force content to overflow */
   display: flex;
   flex-direction: column;
+  /* safe center: cuando el contenido cabe → centrado; si desborda → desde arriba */
+  justify-content: safe center;
 }
 .section-alt { background: var(--bg-2); }
 
-/* ── Section header block (label + title + subtitle) ── */
 .section-center {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+  margin-bottom: clamp(0.625rem, 1.8vw, 1.1rem);
 }
 
-/* ══════════════════════════════════════════
-   GRID SYSTEM
-   All grids use auto-fit so they collapse
-   gracefully at every viewport width.
-   ══════════════════════════════════════════ */
-
-/* 2-col: side-by-side → 1 col below 640 px */
+/* ── Grids ── */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: var(--gap-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--gap-sm);
 }
-
-/* 3-col: 3 → 2 → 1
-   minmax floor 280 px → 2 cols from ~600 px, 3 from ~900 px */
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: var(--gap-sm);
 }
-/* lock to exactly 3 on large screens so odd-card orphans look good */
-@media (min-width: 1025px) {
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
-}
+@media (min-width: 1025px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 
-/* 4-col: 4 → 2 → 1
-   minmax floor 220 px → 2 cols from ~480 px, 4 from ~940 px */
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: var(--gap-sm);
 }
-@media (min-width: 1025px) {
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
-}
+@media (min-width: 1025px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
 
-/* ── Uniform card height inside grids ── */
-.grid-2 > *,
-.grid-3 > *,
-.grid-4 > * {
-  height: 100%;
-}
+.grid-2 > *, .grid-3 > *, .grid-4 > * { height: 100%; }

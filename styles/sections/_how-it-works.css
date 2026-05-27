@@ -1,41 +1,37 @@
-/* steps: 4 → 2 → 1 via auto-fit */
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-  gap: var(--gap-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: var(--gap-sm);
   position: relative;
 }
-@media (min-width: 1025px) {
-  .steps-grid { grid-template-columns: repeat(4, 1fr); }
-}
+@media (min-width: 1025px) { .steps-grid { grid-template-columns: repeat(4, 1fr); } }
 
-/* connector line only on full 4-col layout */
 .steps-connector {
   display: none;
-  position: absolute; top: 3.25rem; left: 12.5%; right: 12.5%; height: 1px;
+  position: absolute; top: 2.75rem; left: 12.5%; right: 12.5%; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(0,229,195,0.25), transparent);
 }
 @media (min-width: 1025px) { .steps-connector { display: block; } }
 
 .step-card {
-  padding: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(0.75rem, 1.8vw, 1.1rem);
   display: flex; flex-direction: column; align-items: center;
-  gap: var(--gap-sm); text-align: center; z-index: 1;
+  gap: 0.4rem; text-align: center; z-index: 1;
   height: 100%;
 }
 .step-icon-wrap { position: relative; }
 .step-number {
-  position: absolute; top: -0.5rem; right: -0.5rem;
-  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  position: absolute; top: -0.4rem; right: -0.4rem;
+  width: 1.35rem; height: 1.35rem; border-radius: 50%;
   background: var(--grad);
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.55rem; font-weight: 900; color: var(--bg);
+  font-size: 0.52rem; font-weight: 900; color: var(--bg);
 }
 .step-card h3 {
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
   font-weight: 700; color: var(--white);
 }
 .step-card p {
-  font-size: clamp(0.75rem, 1.5vw, 0.8rem);
-  line-height: 1.65;
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+  line-height: 1.55;
 }

@@ -1,23 +1,22 @@
-/* impact-card inside .grid-3 or .grid-4 */
 .impact-card {
-  padding: clamp(1rem, 3vw, 1.5rem);
+  padding: clamp(0.75rem, 1.8vw, 1.1rem);
   display: flex; flex-direction: column;
-  align-items: center; gap: var(--gap-sm); text-align: center;
+  align-items: center; gap: 0.4rem; text-align: center;
   height: 100%;
 }
 .impact-stat {
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.85rem);
   font-weight: 900;
 }
 .impact-stat-label {
-  font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+  font-size: clamp(0.58rem, 1.1vw, 0.68rem);
   color: rgba(209,213,219,0.5);
 }
 .impact-card h3 {
-  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
   font-weight: 700; color: var(--white);
 }
 .impact-card p {
-  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-  line-height: 1.65;
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+  line-height: 1.55;
 }

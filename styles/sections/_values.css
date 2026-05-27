@@ -1,15 +1,14 @@
-/* value-card inside .grid-3 or .grid-4 */
 .value-card {
-  padding: clamp(1rem, 3vw, 1.5rem);
-  display: flex; flex-direction: column; gap: var(--gap-sm);
+  padding: clamp(0.75rem, 1.8vw, 1.1rem);
+  display: flex; flex-direction: column; gap: 0.4rem;
   height: 100%;
 }
-.value-emoji { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+.value-emoji { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 .value-card h3 {
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
   font-weight: 700; color: var(--white);
 }
 .value-card p {
-  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-  line-height: 1.65;
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+  line-height: 1.55;
 }
