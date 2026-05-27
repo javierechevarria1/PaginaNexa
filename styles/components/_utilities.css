@@ -5,8 +5,8 @@
 
 /* ── Icon boxes ── */
 .icon-box {
-  width:  clamp(2rem, 4vw, 2.5rem);
-  height: clamp(2rem, 4vw, 2.5rem);
+  width:  clamp(1.75rem, 3.5vw, 2.25rem);
+  height: clamp(1.75rem, 3.5vw, 2.25rem);
   border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, rgba(0,229,195,0.12), rgba(0,207,255,0.08));
@@ -16,8 +16,8 @@
   transition: box-shadow 0.3s ease;
 }
 .icon-box-lg {
-  width:  clamp(2.5rem, 5vw, 3rem);
-  height: clamp(2.5rem, 5vw, 3rem);
+  width:  clamp(2.25rem, 4vw, 2.75rem);
+  height: clamp(2.25rem, 4vw, 2.75rem);
   border-radius: var(--r-lg);
 }
 

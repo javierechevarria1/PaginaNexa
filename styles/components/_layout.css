@@ -19,8 +19,8 @@
 .section {
   position: relative;
   overflow: hidden;
-  /* fluid vertical padding: 2 rem → 5 rem */
-  padding: clamp(2rem, 8vw, 5rem) 0;
+  /* fluid vertical padding — compact enough to see all cards in one viewport */
+  padding: clamp(1.25rem, 3.5vw, 2.25rem) 0;
   /* snap the section so the fixed nav never covers its label */
   scroll-margin-top: var(--nav-offset);
   /* natural height — never force content to overflow */
@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: clamp(1.25rem, 4vw, 2.5rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
 }
 
 /* ══════════════════════════════════════════
@@ -56,7 +56,7 @@
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: var(--gap-md);
+  gap: var(--gap-sm);
 }
 /* lock to exactly 3 on large screens so odd-card orphans look good */
 @media (min-width: 1025px) {
@@ -68,7 +68,7 @@
 .grid-4 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: var(--gap-md);
+  gap: var(--gap-sm);
 }
 @media (min-width: 1025px) {
   .grid-4 { grid-template-columns: repeat(4, 1fr); }

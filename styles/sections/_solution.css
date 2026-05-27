@@ -1,7 +1,7 @@
 /* feature-card lives inside .grid-3 (auto-fit) */
 .feature-card {
-  padding: clamp(1rem, 3vw, 1.5rem);
-  display: flex; flex-direction: column; gap: var(--gap-sm);
+  padding: clamp(0.75rem, 2vw, 1.1rem);
+  display: flex; flex-direction: column; gap: 0.4rem;
   position: relative; overflow: hidden;
   height: 100%;
 }
@@ -12,12 +12,12 @@
 }
 @media (hover: hover) { .feature-card:hover::before { opacity: 1; } }
 
-.feature-card-header { display: flex; align-items: flex-start; justify-content: space-between; }
+.feature-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.2rem; }
 .feature-card h3 {
-  font-size: clamp(0.875rem, 2vw, 1rem);
-  font-weight: 700; color: var(--white); margin-bottom: 0.2rem;
+  font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  font-weight: 700; color: var(--white); margin-bottom: 0.15rem;
 }
 .feature-card p {
-  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
-  line-height: 1.6;
+  font-size: clamp(0.7rem, 1.3vw, 0.8rem);
+  line-height: 1.55;
 }
