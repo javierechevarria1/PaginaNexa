@@ -12,6 +12,9 @@
   }
   #ecosistema .container > .section-center {
     grid-area: header;
+    grid-column: 1 / -1;
+    text-align: center;
+    align-items: center;
   }
   #ecosistema .container > div:nth-child(2) {
     grid-area: diagram;
